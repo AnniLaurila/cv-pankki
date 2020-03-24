@@ -11,12 +11,16 @@ public class Henkilo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long henkiloId;
+	private String etunimi;
+	private String sukunimi;
 	private String puhelin;
 	private String email;
 	 
 	public Henkilo() {};
 	 
-	public Henkilo(String puhelin, String email) {
+	public Henkilo(String etunimi, String sukunimi, String puhelin, String email) {
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
 		this.puhelin = puhelin;
 		this.email = email;
 	}
@@ -27,6 +31,22 @@ public class Henkilo {
 
 	public void setHenkiloId(Long henkiloId) {
 		this.henkiloId = henkiloId;
+	}
+
+	public String getEtunimi() {
+		return etunimi;
+	}
+
+	public void setEtunimi(String etunimi) {
+		this.etunimi = etunimi;
+	}
+
+	public String getSukunimi() {
+		return sukunimi;
+	}
+
+	public void setSukunimi(String sukunimi) {
+		this.sukunimi = sukunimi;
 	}
 
 	public String getPuhelin() {
@@ -47,8 +67,8 @@ public class Henkilo {
 
 	@Override
 	public String toString() {
-		return "Henkilo [henkiloId=" + henkiloId + ", puhelin=" + puhelin + ", email=" + email + "]";
+		return "Henkilo [henkiloId=" + henkiloId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", puhelin="
+				+ puhelin + ", email=" + email + "]";
 	}
-	 
 
 }
