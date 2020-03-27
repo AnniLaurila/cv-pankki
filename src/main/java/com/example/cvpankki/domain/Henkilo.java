@@ -29,9 +29,12 @@ public class Henkilo {
 	boolean onkoKaytettavissa;
 	
 	@JsonBackReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "teknologiaosaaminen")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "henkilo")
 	private List<Teknologiaosaaminen> teknologiaosaaminen;
 	
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "henkilo")
+	private List<Sertifikaatti> sertifikaatit;
 	
 	
 	 
