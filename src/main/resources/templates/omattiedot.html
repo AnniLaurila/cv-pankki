@@ -9,7 +9,22 @@
 <div class="container">
 
 	<h1>Etusivu</h1>
-	<p th:text="${attribuutti}" />
+	    <table>
+		<tr>
+		    <th>Etunimi</th>
+		    <th>Sukunimi</th>
+		    <th>Puhelin</th>
+		    <th>Email</th>
+		    <th>Tehtavanimike</th>
+		</tr>  
+    	<tr th:each = "henkilo : ${henkilot}">
+    		<td th:text="${henkilo.etunimi}"></td>
+    		<td th:text="${henkilo.sukunimi}"></td>
+    		<td th:text="${henkilo.puhelin}"></td>
+    		<td th:text="${henkilo.email}"></td>
+    		<td th:text="${henkilo.tehtavaNimike}"></td> 	
+    	</tr>
+     </table>
 
 
 </div>    	

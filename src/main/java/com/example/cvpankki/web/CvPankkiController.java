@@ -28,8 +28,8 @@ public class CvPankkiController {
 	@RequestMapping(value= {"/", "/index"}, method=RequestMethod.GET)
     public String naytaOmatTiedot(Model model) {
 		
-		//haetaan henkilön omat tiedot
-        model.addAttribute("attribuutti", "Omat tiedot");
+		//hae vain kirjautuneen käyttäjän tiedot
+		model.addAttribute("henkilot", hRepository.findAll());
         return "omattiedot";
     }
 	
