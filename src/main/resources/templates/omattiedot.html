@@ -4,27 +4,16 @@
     <title>Etusivu</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="/css/demo.css">
 </head>
 <body>
-<div class="container">
+<div class=center>
 
 	<h1>Etusivu</h1>
-	    <table>
-		<tr>
-		    <th>Etunimi</th>
-		    <th>Sukunimi</th>
-		    <th>Puhelin</th>
-		    <th>Email</th>
-		    <th>Tehtavanimike</th>
-		</tr>  
-    	<tr th:each = "henkilo : ${henkilot}">
-    		<td th:text="${henkilo.etunimi}"></td>
-    		<td th:text="${henkilo.sukunimi}"></td>
-    		<td th:text="${henkilo.puhelin}"></td>
-    		<td th:text="${henkilo.email}"></td>
-    		<td th:text="${henkilo.tehtavaNimike}"></td> 	
-    	</tr>
-     </table>
+	<p th:text="${henkilo.etunimi}+ ' ' +${henkilo.sukunimi}">
+	<p th:text="${henkilo.email}">
+	<p th:text="${henkilo.puhelin}">
+	<p th:text="${henkilo.tehtavaNimike}">
 
 
 </div>    	

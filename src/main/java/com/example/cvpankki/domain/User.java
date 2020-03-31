@@ -20,6 +20,9 @@ public class User {
     @Column(name = "role", nullable = false)
     private String role;
     
+	@Column(name = "henkilo_id")
+	private Long henkiloId;
+    
     public User() {
     }
 
@@ -61,5 +64,15 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public Long getHenkiloId() {
+		return henkiloId;
+	}
+
+	public void setHenkiloId(Long henkiloId) {
+		this.henkiloId = henkiloId;
+	}
+	
+	
 
 }
