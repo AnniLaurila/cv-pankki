@@ -26,7 +26,48 @@ public class Sertifikaatti {
 	
 	@ManyToOne
 	@JsonManagedReference
-	@JoinColumn(name = "henkiloId")
+	@JoinColumn(name = "henkilo_id")
 	private Henkilo henkilo;
+
+	public Long getSertifikaattiId() {
+		return sertifikaattiId;
+	}
+
+	public void setSertifikaattiId(Long sertifikaattiId) {
+		this.sertifikaattiId = sertifikaattiId;
+	}
+
+	public String getSertifikaatinNimi() {
+		return sertifikaatinNimi;
+	}
+
+	public void setSertifikaatinNimi(String sertifikaatinNimi) {
+		this.sertifikaatinNimi = sertifikaatinNimi;
+	}
+
+	public String getMyontaja() {
+		return myontaja;
+	}
+
+	public void setMyontaja(String myontaja) {
+		this.myontaja = myontaja;
+	}
+
+	public int getVuosi() {
+		return vuosi;
+	}
+
+	public void setVuosi(int vuosi) {
+		this.vuosi = vuosi;
+	}
+
+	public Henkilo getHenkilo() {
+		return henkilo;
+	}
+
+	public void setHenkilo(Henkilo henkilo) {
+		this.henkilo = henkilo;
+	}
+	
 	
 }

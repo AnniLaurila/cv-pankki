@@ -43,6 +43,9 @@ public class CvPankkiController {
 		User user = uRepository.findByUsername(principal.getName());
 		Optional<Henkilo> henkilo = hRepository.findById(user.getHenkiloId());
 		model.addAttribute("henkilo", henkilo.get());
+		model.addAttribute("teknologiat", henkilo.get().getTeknologiaosaaminen());
+		model.addAttribute("sertifikaatit", henkilo.get().getSertifikaatit());
+		
         return "omattiedot";
     }
 	

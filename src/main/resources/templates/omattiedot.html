@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-    <title>Etusivu</title>
+    <title>Omat tiedot</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
     <link rel="stylesheet" href="/css/demo.css">
@@ -9,13 +9,70 @@
 <body>
 <div class=center>
 
-	<h1>Etusivu</h1>
-	<p th:text="${henkilo.etunimi}+ ' ' +${henkilo.sukunimi}">
-	<p th:text="${henkilo.email}">
-	<p th:text="${henkilo.puhelin}">
-	<p th:text="${henkilo.tehtavaNimike}">
+	<h1>Omat tiedot</h1>
+	<table>
+	<tr>
+		<td>Nimi</td>
+		<td th:text="${henkilo.etunimi}+ ' ' +${henkilo.sukunimi}"></td>
+	</tr>
+	<tr>
+		<td>Sähköposti</td>
+		<td th:text="${henkilo.email}"></td>
+	</tr>
+	<tr>
+		<td>Puhelinnumero</td>
+		<td th:text="${henkilo.puhelin}"></td>
+	</tr>
+	<tr>
+		<td>Tehtävänimike</td>
+		<td th:text="${henkilo.tehtavaNimike}"></td>
+	</tr>
+	<tr>
+		<td>Koulutus</td>
+		<td th:text="${henkilo.oppiarvo} +', '+ ${henkilo.oppilaitos} +', '+${henkilo.valmistumisvuosi}"></td>
+	</tr>
+	<tr>
+		<td>Kuvaus</td>
+		<td>
+			<textarea id="kuvaus_ta" th:text="${henkilo.kuvaus}" rows="4" cols="50">
+			</textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>Käytettävissä uusiin projekteihin</td>
+		<td>
+			<div th:if="${henkilo.onkoKaytettavissa} == true">Kyllä</div>
+			<div th:if="${henkilo.onkoKaytettavissa} == false">Ei</div>
+		</td>
+	</tr>	
+	<tr>
+		<td>Teknologiaosaaminen</td>
+
+		<td>
+			<div th:each = "teknologia : ${teknologiat}" 
+				th:text="${teknologia.teknologia}+', '+${teknologia.vuodet}+'v ' +${teknologia.kuukaudet}+'kk'"><br>
+			</div>
+		</td>
+
+	</tr>
+	<tr>
+		<td>Serfikaatit</td>
+		<td>
+			<div th:each = "sertifikaatti : ${sertifikaatit}" 
+				th:text="${sertifikaatti.sertifikaatinNimi}+', '+${sertifikaatti.myontaja}+', ' +${sertifikaatti.vuosi}"><br>
+			</div>
+		</td>
+	</tr>	
+	<tr>
+		<td>Projektikokemus</td>
+		<td>Projekti 1 <br> Projekti 2 <br> TODO jos jää aikaa</td>
+	</tr>		
+	</table>
+	
+	
+		
+</div>
 
 
-</div>    	
 </body>
 </html>

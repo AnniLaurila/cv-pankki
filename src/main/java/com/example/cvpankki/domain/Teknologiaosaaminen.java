@@ -25,8 +25,48 @@ public class Teknologiaosaaminen {
 	
 	@ManyToOne
 	@JsonManagedReference
-	@JoinColumn(name = "henkiloId")
+	@JoinColumn(name = "henkilo_id")
 	private Henkilo henkilo;
+
+	public Long getTeknologiaosaaminenId() {
+		return teknologiaosaaminenId;
+	}
+
+	public void setTeknologiaosaaminenId(Long teknologiaosaaminenId) {
+		this.teknologiaosaaminenId = teknologiaosaaminenId;
+	}
+
+	public String getTeknologia() {
+		return teknologia;
+	}
+
+	public void setTeknologia(String teknologia) {
+		this.teknologia = teknologia;
+	}
+
+	public int getVuodet() {
+		return vuodet;
+	}
+
+	public void setVuodet(int vuodet) {
+		this.vuodet = vuodet;
+	}
+
+	public int getKuukaudet() {
+		return kuukaudet;
+	}
+
+	public void setKuukaudet(int kuukaudet) {
+		this.kuukaudet = kuukaudet;
+	}
+
+	public Henkilo getHenkilo() {
+		return henkilo;
+	}
+
+	public void setHenkilo(Henkilo henkilo) {
+		this.henkilo = henkilo;
+	}
 	
 
 }
