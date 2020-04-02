@@ -14,22 +14,27 @@
 	<tr>
 		<td>Nimi</td>
 		<td th:text="${henkilo.etunimi}+ ' ' +${henkilo.sukunimi}"></td>
+		<td>Muokkaa</td>
 	</tr>
 	<tr>
 		<td>Sähköposti</td>
 		<td th:text="${henkilo.email}"></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Puhelinnumero</td>
 		<td th:text="${henkilo.puhelin}"></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Tehtävänimike</td>
 		<td th:text="${henkilo.tehtavaNimike}"></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Koulutus</td>
 		<td th:text="${henkilo.oppiarvo} +', '+ ${henkilo.oppilaitos} +', '+${henkilo.valmistumisvuosi}"></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Kuvaus</td>
@@ -37,6 +42,7 @@
 			<textarea id="kuvaus_ta" th:text="${henkilo.kuvaus}" rows="4" cols="50">
 			</textarea>
 		</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Käytettävissä uusiin projekteihin</td>
@@ -44,6 +50,7 @@
 			<div th:if="${henkilo.onkoKaytettavissa} == true">Kyllä</div>
 			<div th:if="${henkilo.onkoKaytettavissa} == false">Ei</div>
 		</td>
+		<td></td>
 	</tr>	
 	<tr>
 		<td>Teknologiaosaaminen</td>
@@ -53,7 +60,7 @@
 				th:text="${teknologia.teknologia}+', '+${teknologia.vuodet}+'v ' +${teknologia.kuukaudet}+'kk'"><br>
 			</div>
 		</td>
-
+		<td>Lisää</td>
 	</tr>
 	<tr>
 		<td>Serfikaatit</td>
@@ -62,10 +69,12 @@
 				th:text="${sertifikaatti.sertifikaatinNimi}+', '+${sertifikaatti.myontaja}+', ' +${sertifikaatti.vuosi}"><br>
 			</div>
 		</td>
+		<td>Lisää</td>
 	</tr>	
 	<tr>
 		<td>Projektikokemus</td>
 		<td>Projekti 1 <br> Projekti 2 <br> TODO jos jää aikaa</td>
+		<td></td>
 	</tr>		
 	</table>
 	
