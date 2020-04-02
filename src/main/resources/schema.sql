@@ -59,32 +59,3 @@ constraint kayttaja_henkilo_fk foreign key (henkilo_id) references henkilo(henki
 );
 
 
-
-insert into henkilo (etunimi, sukunimi, puhelin, email, tehtavanimike, kuvaus, oppiarvo, oppilaitos, valmistumisvuosi, onkokaytettavissa)
-values ('Anni', 'Laurila', '0503952800', 'anninmeil@gmail.com', 'Järjestelmäsuunnittelija', 'Anni lorem ipsum blaa kuvaus', 'Filosofian maisteri', 'Helsingin yliopisto', 2016, true);
-
-insert into teknologiaosaaminen (teknologia, vuodet, kuukaudet, henkilo_id)
-values ('Java', 2, 6, 1);
-
-insert into teknologiaosaaminen (teknologia, vuodet, kuukaudet, henkilo_id)
-values ('SQL', 5, 1, 1);
-
-insert into sertifikaatti (nimi, myontaja, vuosi, henkilo_id)
-values ('Oracle certified professional (ocp) Java SE 8 programmer', 'Oracle', 2017, 1);
-
-insert into sertifikaatti (nimi, myontaja, vuosi, henkilo_id)
-values ('Certified ScrumMaster', 'Scrum Alliance', 2017, 1);
-
-
-insert into projekti (projektinimi, tehtava, asiakas, alkukk, alkuvuosi, avainsanat, henkilo_id)
-values ('Hippo projekti', 'Java-ohjelmistokehittäjä', 'Espoon kaupunki', 10, 2019, 'Java Sql Spring', 1);
-
-
-insert into henkilo (etunimi, sukunimi, puhelin, email, tehtavanimike, kuvaus, oppiarvo, oppilaitos, valmistumisvuosi, onkokaytettavissa)
-values ('Heidi', 'Hooär', '0503217724', 'heidi.hooar@gmail.com', 'HR-assistentti', 'Heidi lorem ipsum blaa kuvaus', 'Tradenomi', 'Haaga-Helia', 2015, false);
-
-
-insert into kayttaja (username, password, role, henkilo_id)
-values ('user', '$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6', 'USER', 1);
-insert into kayttaja (username, password, role, henkilo_id)
-values ('admin','$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C', 'ADMIN', 2);
