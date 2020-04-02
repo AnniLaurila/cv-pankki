@@ -2,7 +2,7 @@ package com.example.cvpankki.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "kayttaja")
 public class User {
 
     @Id

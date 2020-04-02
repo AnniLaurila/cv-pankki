@@ -34,7 +34,7 @@ class UserRepositoryTest {
 		repository.save(user1);
     	repository.delete(user1);
     	Optional<User> user2 = repository.findById(user1.getId());
-    	assertTrue(user2.isEmpty());
+    	assertTrue(!user2.isPresent());
     } 
 
     @Test
