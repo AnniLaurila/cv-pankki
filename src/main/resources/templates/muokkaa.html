@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Omat tiedot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" href="/css/demo.css">
+</head>
+<body>
+	<div class=center>
+
+		<h1>Muokkaa omia tietoja</h1>
+		<div>
+			<form th:object="${henkilo}" th:action="@{../tallennaOmatTiedot}" action="#"
+				method="post">
+				<label for="henkiloId"></label>
+				<input type="hidden" id="henkiloId" th:field="${henkilo.henkiloId}" readonly="readonly" />
+				<table>
+					<tr>
+						<td>Etunimi</td>
+						<td>
+							<input type="text" id="etunimi" th:field="${henkilo.etunimi}" /><br>
+						</td>	
+					</tr>
+					<tr>
+						<td>Sukunimi</td>
+						<td>
+							<input type="text" id="sukunimi" th:field="${henkilo.sukunimi}" /><br>
+						</td>	
+					</tr>					
+					<tr>
+						<td>Sähköposti</td>
+						<td>
+							<input type="text" id="email" th:field="${henkilo.email}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Puhelinnumero</td>
+						<td>
+						<input type="text" id="puhelin" th:field="${henkilo.puhelin}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Tehtävänimike</td>
+						<td>
+							<input type="text" id="tehtavaNimike" th:field="${henkilo.tehtavaNimike}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Koulutus</td>
+						<td>
+							<label for="oppiarvo">Oppiarvo </label><input type="text" id="oppiarvo" th:field="${henkilo.oppiarvo}" /><br>
+							<div style="clear: both; display: block; height: 6px;"></div>
+							<label for="oppilaitos">Oppilaitos </label><input type="text" id="oppilaitos" th:field="${henkilo.oppilaitos}" /><br>
+							<div style="clear: both; display: block; height: 6px;"></div>
+							<label for="valmistumisvuosi">Valmistumisvuosi </label><input type="text" id="valmistumisvuosi" th:field="${henkilo.valmistumisvuosi}" /><br>
+						</td>	
+						
+					</tr>
+					<tr>
+						<td>Kuvaus</td>
+						<td>
+							<input type="text" id="kuvaus" th:field="${henkilo.kuvaus}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Käytettävissä uusiin projekteihin</td>
+						<td>
+							<input type="checkbox" name="onkoKaytettavissa" th:checked="${henkilo.onkoKaytettavissa}">
+						</td>
+					</tr>
+
+				</table>
+				<br>
+				<input type="submit" value="Tallenna"></input>
+			</form>
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

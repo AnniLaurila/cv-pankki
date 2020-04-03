@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Teknologiaosaaminen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" href="/css/demo.css">
+</head>
+<body>
+	<div class=center>
+
+		<h1>Muokkaa teknologiaosaamista</h1>
+
+		<table>
+			<th>Teknologia</th>
+			<th>Vuodet</th>
+			<th>Kuukaudet</th>
+			<th></th>
+			<tr th:each="tn : ${henkilo.teknologiaosaaminen}">
+				<td th:text="${tn.teknologia}"></td>
+				<td th:text="${tn.vuodet}"></td>
+				<td th:text="${tn.kuukaudet}"></td>
+				<td><a
+					th:href="@{/poistaTeknologia/{id}(id=${tn.teknologiaosaaminenId})}">Poista</a></td>
+			</tr>
+
+
+		</table>
+		<br>
+
+		<h4>Lisää uusi teknologia</h4>
+		<form th:object="${teknologiaosaaminen}"
+			th:action="@{tallennaTeknologia}" action="#" method="post">
+			<label for="teknologia">Teknologia</label> 
+			<input type="text" id="teknologia" th:field="*{teknologia}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<label for="vuodet">Vuodet</label>
+			<input type="text" id="vuodet" th:field="*{vuodet}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<label for="kuukaudet">Kuukaudet</label> 
+			<input type="text" id="kuukaudet" th:field="*{kuukaudet}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<input type="submit" value="Tallenna"></input>
+		</form>
+
+	</div>
+
+
+</body>
+</html>

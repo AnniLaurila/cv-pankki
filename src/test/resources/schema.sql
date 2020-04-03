@@ -53,7 +53,7 @@ foreign key (henkilo_id) references henkilo(henkilo_id)
 
 
 
-create table if not exists user (
+create table if not exists kayttaja (
 id int(5) not null auto_increment,
 username varchar(50) not null unique,
 password varchar(200) not null,
