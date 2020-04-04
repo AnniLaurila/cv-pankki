@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Projektit</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" href="/css/demo.css">
+</head>
+<body>
+	<div class=center>
+
+		<h1>Muokkaa projektikokemusta</h1>
+		<a th:href="@{/}">Etusivulle</a> <br> <br>
+		<table>
+			<th>Projekti</th>
+			<th>Tehtävä</th>
+			<th>Asiakas</th>
+			<th>Alkoi</th>
+			<th>Paattyi</th>
+			<th>Avainsanat</th>
+			<th></th>
+			<tr th:each="projekti : ${henkilo.projektit}">
+				<td th:text="${projekti.projektinimi}"></td>
+				<td th:text="${projekti.tehtava}"></td>
+				<td th:text="${projekti.asiakas}"></td>
+				<td th:text="${projekti.alkukk}+'/'+${projekti.alkuvuosi}"></td>
+				<td th:text="${projekti.paattymiskk}+'/'+${projekti.paattymisvuosi}"></td>
+				<td th:text="${projekti.avainsanat}"></td>
+				
+				<td><a
+					th:href="@{/poistaProjekti/{id}(id=${projekti.projektiId})}">Poista</a></td>
+			</tr>
+
+
+		</table>
+		<br>
+
+		<h4>Lisää uusi projekti</h4>
+		<form th:object="${projekti}"
+			th:action="@{tallennaProjekti}" action="#" method="post">
+			<label for="projekti">Projekti</label> 
+			<input type="text" id="projekti" th:field="*{projektinimi}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<label for="tehtava">Tehtava</label> 
+			<input type="text" id="tehtava" th:field="*{tehtava}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<label for="asiakas">Asiakas</label> 
+			<input type="text" id="asiakas" th:field="*{asiakas}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<label for="alkukk">Alkukuukausi</label> 
+			<input type="text" id="alkukk" th:field="*{alkukk}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>	
+			<label for="alkuvuosi">Alkuvuosi</label> 
+			<input type="text" id="alkuvuosi" th:field="*{alkuvuosi}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<label for="paattymiskk">Paattymiskuukausi</label> 
+			<input type="text" id="paattymiskk" th:field="*{paattymiskk}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>	
+			<label for="paattymisvuosi">Paattymisvuosi</label> 
+			<input type="text" id="paattymisvuosi" th:field="*{paattymisvuosi}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>	
+			<label for="avainsanat">Avainsanat</label> 
+			<input type="text" id="avainsanat" th:field="*{avainsanat}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>											
+			<input type="submit" value="Tallenna"></input>
+		</form>
+
+	</div>
+
+
+</body>
+</html>

@@ -66,12 +66,16 @@
 				th:text="${sertifikaatti.sertifikaatinNimi}+', '+${sertifikaatti.myontaja}+', ' +${sertifikaatti.vuosi}"><br>
 			</div>
 		</td>
-		<td>Muokkaa</td>
+		<td><a th:href="@{/sertifikaatit}">Muokkaa</a></td>
 	</tr>	
 	<tr>
 		<td>Projektikokemus</td>
-		<td>Projekti 1 <br> Projekti 2 <br> TODO jos jää aikaa</td>
-		<td></td>
+		<td>
+			<div th:each = "projekti : ${projektit}" 
+				th:text="${projekti.projektinimi}+', '+${projekti.asiakas}"><br>
+			</div>
+		</td>
+		<td><a th:href="@{/projektit}">Muokkaa</a></td>
 	</tr>		
 	</table>
 	

@@ -1,5 +1,6 @@
 package com.example.cvpankki.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -42,6 +43,10 @@ public class Henkilo {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "henkilo")
 	private List<Sertifikaatti> sertifikaatit;
 
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "henkilo")
+	private List<Projekti> projektit;
+	
 	public Long getHenkiloId() {
 		return henkiloId;
 	}
@@ -139,11 +144,23 @@ public class Henkilo {
 	}
 
 	public List<Sertifikaatti> getSertifikaatit() {
+		//sortataan sertifikaatit aina myöntämisvuoden mukaan
+		Collections.sort(sertifikaatit);
 		return sertifikaatit;
 	}
 
 	public void setSertifikaatit(List<Sertifikaatti> sertifikaatit) {
 		this.sertifikaatit = sertifikaatit;
+	}
+
+	public List<Projekti> getProjektit() {
+		//sortataan projekit aina alkuvuoden mukaan
+		Collections.sort(projektit);
+		return projektit;
+	}
+
+	public void setProjektit(List<Projekti> projektit) {
+		this.projektit = projektit;
 	}
 	
 	

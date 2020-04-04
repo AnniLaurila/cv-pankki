@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "sertifikaatti")
-public class Sertifikaatti {
+public class Sertifikaatti implements Comparable<Sertifikaatti> {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,7 +22,7 @@ public class Sertifikaatti {
 	@Column(name = "nimi")
 	private String sertifikaatinNimi;
 	private String myontaja;
-	private int vuosi;
+	private Integer vuosi;
 	
 	@ManyToOne
 	@JsonManagedReference
@@ -53,11 +53,11 @@ public class Sertifikaatti {
 		this.myontaja = myontaja;
 	}
 
-	public int getVuosi() {
+	public Integer getVuosi() {
 		return vuosi;
 	}
 
-	public void setVuosi(int vuosi) {
+	public void setVuosi(Integer vuosi) {
 		this.vuosi = vuosi;
 	}
 
@@ -69,5 +69,9 @@ public class Sertifikaatti {
 		this.henkilo = henkilo;
 	}
 	
+    @Override
+    public int compareTo(Sertifikaatti s) {
+        return this.getVuosi().compareTo(s.getVuosi());
+    }
 	
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Sertifikaatit</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" href="/css/demo.css">
+</head>
+<body>
+	<div class=center>
+
+		<h1>Muokkaa sertifikaatteja</h1>
+		<a th:href="@{/}">Etusivulle</a>
+		<br>
+		<br>
+		<table>
+			<th>Sertifikaatti</th>
+			<th>Myöntäjä</th>
+			<th>Vuosi</th>
+			<th></th>
+			<tr th:each="sertifikaatti : ${henkilo.sertifikaatit}">
+				<td th:text="${sertifikaatti.sertifikaatinNimi}"></td>
+				<td th:text="${sertifikaatti.myontaja}"></td>
+				<td th:text="${sertifikaatti.vuosi}"></td>
+				<td><a
+					th:href="@{/poistaSertifikaatti/{id}(id=${sertifikaatti.sertifikaattiId})}">Poista</a></td>
+			</tr>
+
+
+		</table>
+		<br>
+
+		<h4>Lisää uusi sertifikaatti</h4>
+		<form th:object="${sertifikaatti}"
+			th:action="@{tallennaSertifikaatti}" action="#" method="post">
+			<label for="sertifikaatti">Sertifikaatti</label> 
+			<input type="text" id="sertifikaatti" th:field="*{sertifikaatinNimi}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<label for="myontaja">Myöntäjä</label>
+			<input type="text" id="vuodet" th:field="*{myontaja}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<label for="vuosi">Vuosi</label> 
+			<input type="text" id="vuosi" th:field="*{vuosi}" /> <br>
+			<div style="clear: both; display: block; height: 6px;"></div>
+			<input type="submit" value="Tallenna"></input>
+		</form>
+
+	</div>
+
+
+</body>
+</html>

@@ -12,6 +12,9 @@
 	<div class=center>
 
 		<h1>Muokkaa omia tietoja</h1>
+		<a th:href="@{/}">Etusivulle</a>
+		<br>
+		<br>
 		<div>
 			<form th:object="${henkilo}" th:action="@{../tallennaOmatTiedot}" action="#"
 				method="post">
