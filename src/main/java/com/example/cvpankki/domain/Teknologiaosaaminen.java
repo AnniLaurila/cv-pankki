@@ -67,6 +67,6 @@ public class Teknologiaosaaminen {
 	public void setHenkilo(Henkilo henkilo) {
 		this.henkilo = henkilo;
 	}
-	
 
+    
 }

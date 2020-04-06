@@ -140,6 +140,14 @@ public class CvPankkiController {
 		return "redirect:../projektit";
 	}
 	
+	@RequestMapping(value = { "/henkiloListaus" }, method = RequestMethod.GET)
+	public String naytaKaikkiCVt(Model model, HttpServletRequest request) {
+
+		model.addAttribute("henkilot", hRepository.findAll());
+		return "henkilolistaus";
+	}
+	
+	
 	private Henkilo haeKirjautunutKayttaja(HttpServletRequest request) {
 
 		Principal principal = request.getUserPrincipal();

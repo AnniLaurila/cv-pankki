@@ -1,6 +1,7 @@
 package com.example.cvpankki.domain;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -160,6 +161,11 @@ public class Henkilo {
 	}
 
 	public List<Teknologiaosaaminen> getTeknologiaosaaminen() {
+		
+		//sortataan teknologiaosaaminen ajallisen kokemuksen mukaan suurimmasta pienimpään
+		Collections.sort(teknologiaosaaminen, Comparator.comparing(Teknologiaosaaminen::getVuodet)
+	            .thenComparing(Teknologiaosaaminen::getKuukaudet));
+		Collections.reverse(teknologiaosaaminen);
 		return teknologiaosaaminen;
 	}
 

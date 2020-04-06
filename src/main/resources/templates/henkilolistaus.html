@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>CV:t</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" href="/css/demo.css">
+</head>
+<body>
+	<div class=center>
+
+		<h1>Etsi CV</h1>
+		<a th:href="@{/}">Etusivulle</a> <br> <br>
+		<table>
+			<th>Nimi</th>
+			<th>Tehtävänimike</th>
+			<th>Kuvaus</th>
+			<th>Onko käytettävissä</th>
+			<tr th:each="henkilo : ${henkilot}">
+				<td th:text="${henkilo.etunimi}+' '+${henkilo.sukunimi}"></td>
+				<td th:text="${henkilo.tehtavaNimike}"></td>
+				<td th:text="${henkilo.kuvaus}"></td>
+				<td th:if="${henkilo.onkoKaytettavissa} == true">Kyllä</td>
+				<td th:if="${henkilo.onkoKaytettavissa} == false">Ei</td>
+			</tr>
+
+
+		</table>
+		<br>
+
+	</div>
+
+
+</body>
+</html>
