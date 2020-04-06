@@ -47,6 +47,30 @@ public class Henkilo {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "henkilo")
 	private List<Projekti> projektit;
 	
+	public Henkilo() {}
+	
+	public Henkilo(String etunimi, String sukunimi, String puhelin, String email, String tehtavaNimike, String kuvaus,
+			String oppiarvo, String oppilaitos, int valmistumisvuosi, boolean onkoKaytettavissa,
+			List<Teknologiaosaaminen> teknologiaosaaminen, List<Sertifikaatti> sertifikaatit,
+			List<Projekti> projektit) {
+
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.puhelin = puhelin;
+		this.email = email;
+		this.tehtavaNimike = tehtavaNimike;
+		this.kuvaus = kuvaus;
+		this.oppiarvo = oppiarvo;
+		this.oppilaitos = oppilaitos;
+		this.valmistumisvuosi = valmistumisvuosi;
+		this.onkoKaytettavissa = onkoKaytettavissa;
+		this.teknologiaosaaminen = teknologiaosaaminen;
+		this.sertifikaatit = sertifikaatit;
+		this.projektit = projektit;
+	}
+
+
+
 	public Long getHenkiloId() {
 		return henkiloId;
 	}
