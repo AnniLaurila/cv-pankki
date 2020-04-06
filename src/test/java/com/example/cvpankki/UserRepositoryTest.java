@@ -26,7 +26,6 @@ class UserRepositoryTest {
 		User user1 = new User("testUser", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
 		repository.save(user1);
     	assertThat(user1.getId()).isNotNull();
-    	//repository.delete(user1);
     } 
     
     @Test
@@ -44,7 +43,6 @@ class UserRepositoryTest {
 		repository.save(user1);
     	Optional<User> user2 = repository.findById(user1.getId());
     	assertTrue(user2.isPresent());
-    	//repository.delete(user1);
     } 
 
 }
