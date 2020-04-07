@@ -1,6 +1,7 @@
 package com.example.cvpankki.web;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.cvpankki.domain.Henkilo;
 import com.example.cvpankki.domain.HenkiloRepository;
@@ -23,6 +25,7 @@ import com.example.cvpankki.domain.Teknologiaosaaminen;
 import com.example.cvpankki.domain.TeknologiaosaaminenRepository;
 import com.example.cvpankki.domain.User;
 import com.example.cvpankki.domain.UserRepository;
+
 
 @Controller
 
@@ -150,6 +153,17 @@ public class CvPankkiController {
 		return "henkilolistaus";
 	}
 	
+	// REST kaikkien työntekijöiden hakuun
+    @RequestMapping(value="/henkilot")
+    public @ResponseBody List<Henkilo> findHenkilotRest() {	
+        return (List<Henkilo>) hRepository.findAll();
+    }    
+    
+	// REST yksittäisen työntekijän tietojen hakuun
+    @RequestMapping(value="/henkilo/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Henkilo> findHenkiloRest(@PathVariable("id") Long henkiloId) {	
+    	return hRepository.findById(henkiloId);
+    } 
 	
 	private Henkilo haeKirjautunutKayttaja(HttpServletRequest request) {
 
