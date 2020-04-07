@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -140,6 +141,8 @@ public class CvPankkiController {
 		return "redirect:../projektit";
 	}
 	
+	//vain admin-roolin omaavalla on oikeus selata kaikkien työtekijöiden CV:itä
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = { "/henkiloListaus" }, method = RequestMethod.GET)
 	public String naytaKaikkiCVt(Model model, HttpServletRequest request) {
 

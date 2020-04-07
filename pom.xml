@@ -28,6 +28,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<dependency>
+        	<groupId>org.thymeleaf.extras</groupId>
+        	<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+    	</dependency>
+		
+		<!--H2-kanta on testejä varten-->
 		<dependency>
    			<groupId>com.h2database</groupId>
    			<artifactId>h2</artifactId>
@@ -73,6 +80,7 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
