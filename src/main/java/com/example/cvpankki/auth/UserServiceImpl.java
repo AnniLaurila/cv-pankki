@@ -18,9 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user) {
-    	//tarkista vielä hash
-        user.setPasswordHash(bCryptPasswordEncoder.encode(user.getPasswordHash()));
-        
+        user.setPasswordHash(bCryptPasswordEncoder.encode(user.getPasswordHash()));      
         userRepository.save(user);
     }
 
