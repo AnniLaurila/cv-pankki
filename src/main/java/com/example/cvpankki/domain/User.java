@@ -16,6 +16,9 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String passwordHash;
+    
+    @Transient
+    private String passwordConfirm;
 
     @Column(name = "role", nullable = false)
     private String role;
@@ -71,6 +74,14 @@ public class User {
 
 	public void setHenkiloId(Long henkiloId) {
 		this.henkiloId = henkiloId;
+	}
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 	
 	

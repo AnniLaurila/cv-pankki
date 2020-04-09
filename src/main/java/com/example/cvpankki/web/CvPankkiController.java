@@ -5,16 +5,22 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.cvpankki.auth.UserService;
+import com.example.cvpankki.auth.UserValidator;
 import com.example.cvpankki.domain.Henkilo;
 import com.example.cvpankki.domain.HenkiloRepository;
 import com.example.cvpankki.domain.Projekti;
@@ -41,6 +47,11 @@ public class CvPankkiController {
 	private ProjektiRepository pRepository;
 	@Autowired
 	private UserRepository uRepository;
+	
+    @Autowired
+    private UserValidator userValidator;
+    @Autowired
+    private UserService userService;
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public String naytaOmatTiedot(Model model, HttpServletRequest request) {
@@ -65,6 +76,7 @@ public class CvPankkiController {
 
 	@RequestMapping(value = "/tallennaOmatTiedot", method = RequestMethod.POST)
 	public String tallenna(Henkilo henkilo) {
+		//tarkistus, että käyttäjä tallentaa omia tietojaan?
 		hRepository.save(henkilo);
 		return "redirect:/";
 	}
@@ -165,6 +177,33 @@ public class CvPankkiController {
     	return hRepository.findById(henkiloId);
     } 
 	
+    
+	@RequestMapping(value = { "/vaihdasalasana" }, method = RequestMethod.GET)
+	public String vaihdaSalasana(Model model, HttpServletRequest request) {
+
+		Principal principal = request.getUserPrincipal();
+		User user = uRepository.findByUsername(principal.getName());
+		model.addAttribute("user", user);
+		return "vaihdasalasana";
+	}
+	
+	@RequestMapping(value = "/tallennaSalasana", method = RequestMethod.POST)
+	public String tallennaSalasana(@ModelAttribute User user, BindingResult bindingResult, 
+			HttpServletRequest request) {
+		
+		user.setHenkiloId(haeKirjautunutKayttaja(request).getHenkiloId());
+        userValidator.validate(user, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "vaihdasalasana";
+        }
+
+        user.setHenkiloId(haeKirjautunutKayttaja(request).getHenkiloId());
+        userService.save(user);
+        return "redirect:/";
+	}	
+    
+    
 	private Henkilo haeKirjautunutKayttaja(HttpServletRequest request) {
 
 		Principal principal = request.getUserPrincipal();

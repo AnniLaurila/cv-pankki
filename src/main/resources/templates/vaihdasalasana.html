@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Omat tiedot - vaihda salasana</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" href="/css/demo.css">
+</head>
+<body>
+
+	<div class="col-md-4" style="padding: 20px 0">
+		<form th:action="@{/logout}" method="post">
+			<a th:href="@{/logout}">Kirjaudu ulos</a>
+		</form>
+	</div>
+	<a th:href="@{/}">Etusivulle</a>
+	<br>
+	<br>
+
+	<div class=center>
+
+		<h1>Vaihda salasana</h1>
+
+		<br>
+		<div>
+			<form th:object="${user}" th:action="@{../tallennaSalasana}"
+				action="#" method="post">
+				<label for="id"></label> <input type="hidden" id="id"
+					th:field="${user.id}" readonly="readonly" />
+				<label for="role"></label> <input type="hidden" id="role"
+					th:field="${user.role}" readonly="readonly" />
+				<label for="username"></label> <input type="hidden" id="username"
+					th:field="${user.username}" readonly="readonly" />
+				<table>
+					<tr>
+						<td>Käyttäjätunnus</td>
+						<td th:text="${user.username}"></td>
+					</tr>
+					<tr>
+						<td>Uusi salasana</td>
+						<td>
+							<input type="password" id="password" th:field="${user.passwordHash}" /><br>
+						</td>	
+					</tr>
+					<tr>
+						<td>Salasana uudelleen</td>
+						<td>
+							<input type="password" id="passwordConfirm" th:field="${user.passwordConfirm}" /><br>
+						</td>	
+					</tr>
+
+
+
+				</table>
+				<br> <input type="submit" value="Tallenna"></input>
+			</form>
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

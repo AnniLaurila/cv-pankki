@@ -25,7 +25,9 @@
 			<tr>
 				<td>Nimi</td>
 				<td th:text="${henkilo.etunimi}+ ' ' +${henkilo.sukunimi}"></td>
-				<td><a th:href="@{/muokkaa}">Muokkaa</a></td>
+				<td><a th:href="@{/muokkaa}">Muokkaa</a> <br>
+				<a th:href="@{/vaihdasalasana}">Vaihda salasana</a>
+				</td>
 			</tr>
 			<tr>
 				<td>Sähköposti</td>
