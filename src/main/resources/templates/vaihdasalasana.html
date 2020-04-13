@@ -28,11 +28,11 @@
 			<form th:object="${user}" th:action="@{../tallennaSalasana}"
 				action="#" method="post">
 				<label for="id"></label> <input type="hidden" id="id"
-					th:field="${user.id}" readonly="readonly" />
-				<label for="role"></label> <input type="hidden" id="role"
-					th:field="${user.role}" readonly="readonly" />
-				<label for="username"></label> <input type="hidden" id="username"
-					th:field="${user.username}" readonly="readonly" />
+					th:field="${user.id}" readonly="readonly" /> <label for="role"></label>
+				<input type="hidden" id="role" th:field="${user.role}"
+					readonly="readonly" /> <label for="username"></label> <input
+					type="hidden" id="username" th:field="${user.username}"
+					readonly="readonly" />
 				<table>
 					<tr>
 						<td>Käyttäjätunnus</td>
@@ -40,20 +40,19 @@
 					</tr>
 					<tr>
 						<td>Uusi salasana</td>
-						<td>
-							<input type="password" id="password" th:field="${user.passwordHash}" /><br>
-						</td>	
+						<td><input type="password" id="password"
+							th:field="${user.passwordHash}" /><br></td>
 					</tr>
+					
 					<tr>
 						<td>Salasana uudelleen</td>
-						<td>
-							<input type="password" id="passwordConfirm" th:field="${user.passwordConfirm}" /><br>
-						</td>	
+						<td><input type="password" id="passwordConfirm"
+							th:field="${user.passwordConfirm}" /><br></td>
 					</tr>
-
 
 
 				</table>
+				
 				<br> <input type="submit" value="Tallenna"></input>
 			</form>
 		</div>

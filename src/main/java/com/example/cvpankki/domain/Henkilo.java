@@ -176,6 +176,7 @@ public class Henkilo {
 	public List<Sertifikaatti> getSertifikaatit() {
 		//sortataan sertifikaatit aina myöntämisvuoden mukaan
 		Collections.sort(sertifikaatit);
+		Collections.reverse(sertifikaatit);
 		return sertifikaatit;
 	}
 
@@ -186,6 +187,7 @@ public class Henkilo {
 	public List<Projekti> getProjektit() {
 		//sortataan projekit aina alkuvuoden mukaan
 		Collections.sort(projektit);
+		Collections.reverse(projektit);
 		return projektit;
 	}
 
